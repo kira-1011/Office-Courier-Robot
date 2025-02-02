@@ -1,6 +1,0 @@
-source;share/office_world/hook/pythonpath.ps1
-source;share/office_world/hook/pythonpath.dsv
-source;share/office_world/hook/pythonpath.sh
-source;share/office_world/hook/ament_prefix_path.ps1
-source;share/office_world/hook/ament_prefix_path.dsv
-source;share/office_world/hook/ament_prefix_path.sh

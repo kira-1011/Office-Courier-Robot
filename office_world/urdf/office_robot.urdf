@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+
+<robot name="IMRrobot">
+
+   <material name="white">
+      <color rgba="1 1 1 1"/>
+    </material>
+
+    <material name="black">
+      <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <!--IMU Link-->
+  <joint name="imu_link_joint" type="floating">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+
+  <link name="imu_link">
+    <visual>
+      <geometry>
+        <box size="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!--SENSOR HEAD-->
+  <joint name="sensor_head_link_joint" type="fixed">
+    <axis xyz="1 0 0"/>
+    <parent link="imu_link"/>
+    <child link="sensor_head_link"/>
+    <origin rpy="3.14159 0 0" xyz="0 0 0"/>
+  </joint>
+
+  <link name="sensor_head_link">
+    <visual>
+      <geometry>
+        <mesh filename="model://meshes/sensorHead.stl"/>
+       <!-- <box size="0.45 0.35 0.22"/> -->
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <!-- LIDAR -->
+  <joint name="lidar_link_joint" type="fixed">
+    <axis xyz="1 0 0"/>
+    <parent link="sensor_head_link"/>
+    <child link="lidar_link"/>
+    <origin rpy="0 0 0" xyz="0.21082 0 0.12"/>
+  </joint>
+
+  <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.0375"/>
+      </geometry>
+      <origin rpy="0 0 1.57075" xyz="0 0 0"/>
+      <material name="black"/>
+    </visual>
+  </link>
+
+  <!-- SONAR0 -->
+  <joint name="sonar0_joint" type="fixed">
+    <parent link="sensor_head_link"/>
+    <child link="sonar0"/>
+    <origin rpy="0 0 1.57075" xyz="0.144526 0.2032 0.08255"/>
+   <!-- <axis xyz="0 0 1"/>
+    <origin xyz="0 -0.22 0.25"/> -->
+  </joint>
+
+  <link name="sonar0">
+    <visual>
+      <geometry>
+        <!-- <cylinder length="0.035" radius="0.035"/> -->
+         <mesh filename="model://meshes/UT_MB7380.stl"/> 
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+  <!-- SONAR1 -->
+  <joint name="sonar1_joint" type="fixed">
+    <parent link="sensor_head_link"/>
+    <child link="sonar1"/>
+    <origin rpy="0 0 0.610865" xyz="0.22479 0.1524 0.08255"/>
+   <!-- <axis xyz="0 0 1"/>
+    <origin xyz="0 -0.22 0.25"/> -->
+  </joint>
+
+  <link name="sonar1">
+    <visual>
+      <geometry>
+        <!-- <cylinder length="0.035" radius="0.035"/> -->
+        <mesh filename="model://meshes/UT_MB7380.stl"/> 
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+ <!-- SONAR2 -->
+  <joint name="sonar2_joint" type="fixed">
+    <parent link="sensor_head_link"/>
+    <child link="sonar2"/>
+    <origin rpy="0 0 0" xyz="0.254 0 0.08255"/>
+   <!-- <axis xyz="0 0 1"/>
+    <origin xyz="0 -0.22 0.25"/> -->
+  </joint>
+
+  <link name="sonar2">
+    <visual>
+      <geometry>
+         <!--<cylinder length="0.035" radius="0.035"/> -->
+        <mesh filename="model://meshes/UT_MB7380.stl"/> 
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+<!-- SONAR3 -->
+  <joint name="sonar3_joint" type="fixed">
+    <parent link="sensor_head_link"/>
+    <child link="sonar3"/>
+    <origin rpy="0 0 -0.610865" xyz="0.22479 -0.1524 0.08255"/>
+   <!-- <axis xyz="0 0 1"/>
+    <origin xyz="0 -0.22 0.25"/> -->
+  </joint>
+
+  <link name="sonar3">
+    <visual>
+      <geometry>
+       <!--  <cylinder length="0.035" radius="0.035"/> -->
+        <mesh filename="model://meshes/UT_MB7380.stl"/> 
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+<!-- SONAR4 -->
+  <joint name="sonar4_joint" type="fixed">
+    <parent link="sensor_head_link"/>
+    <child link="sonar4"/>
+    <origin rpy="0 0 -1.57075" xyz="0.144526 -0.2032 0.08255"/>
+   <!-- <axis xyz="0 0 1"/>
+    <origin xyz="0 -0.22 0.25"/> -->
+  </joint>
+
+  <link name="sonar4">
+    <visual>
+      <geometry>
+       <!--  <cylinder length="0.035" radius="0.035"/> -->
+        <mesh filename="model://meshes/UT_MB7380.stl"/> 
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="white"/>
+    </visual>
+  </link>
+
+</robot>

@@ -15,7 +15,10 @@ def generate_launch_description():
   default_rviz_config_path = os.path.join(pkg_share, 'rviz/rviz_basic_settings.rviz')
 
   # Set the path to the URDF file
-  default_urdf_model_path = os.path.join(pkg_share, 'urdf/my_robot.urdf')
+  default_urdf_model_path = os.path.join(pkg_share, 'urdf/office_robot.urdf')
+
+  gazebo_models_path = os.path.join(pkg_share, 'meshes')
+  os.environ["GAZEBO_MODEL_PATH"] = gazebo_models_path
 
   # Launch configuration variables specific to simulation
   gui = LaunchConfiguration('gui')
